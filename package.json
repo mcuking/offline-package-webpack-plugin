@@ -1,6 +1,6 @@
 {
   "name": "offline-package-webpack-plugin",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "offline-package-webpack-plugin",
   "main": "index.js",
   "files": [
@@ -10,6 +10,7 @@
   "dependencies": {
     "jszip": "^3.2.2",
     "lodash": "^4.17.15",
+    "mime-types": "^2.1.25",
     "webpack-sources": "^1.4.3"
   },
   "repository": {
