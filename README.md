@@ -6,19 +6,21 @@ Resource Mapping Json:
 
 ```json
 {
-  "packageName": "meeting",
+  "packageId": "meeting",
   "items": [
     {
-      "remoteUrl": "http://192.168.10.88/img/logo.82b9c7a5.png",
-      "path": "img/logo.82b9c7a5.png"
+      "packageId": "meeting",
+      "version": 1,
+      "remoteUrl": "http://192.168.88.88:5000/js/app.630f02ab.js",
+      "path": "js/app.630f02ab.js",
+      "mimeType": "application/javascript"
     },
     {
-      "remoteUrl": "http://192.168.10.88/js/about.9d81a00f.js",
-      "path": "js/about.9d81a00f.js"
-    },
-    {
-      "remoteUrl": "http://192.168.10.88/css/app.4776214a.css",
-      "path": "css/app.4776214a.css"
+      "packageId": "meeting",
+      "version": 1,
+      "remoteUrl": "http://192.168.88.88:5000/js/chunk-vendors.dca9c05a.js",
+      "path": "js/chunk-vendors.dca9c05a.js",
+      "mimeType": "application/javascript"
     }
   ]
 }
@@ -42,8 +44,10 @@ Via `webpack.config.js` or any other webpack config file.
 {
   plugins: [
     new OfflinePackagePlugin({
-      packageName: 'meeting',
-      baseUrl: 'http://192.168.10.88/',
+      packageNameKey: 'packageId',
+      packageNameValue: 'meeting',
+      version: 1,
+      baseUrl: 'http://192.168.88.88:5000/',
       fileTypes: ['js', 'css', 'png']
     })
   ];
@@ -54,15 +58,44 @@ Via `webpack.config.js` or any other webpack config file.
 
 `options` need to be an object.
 
-### packageName
+### packageNameKey
 
-This option determines the value of packageName in the resource mapping json.
+This option determines the key of package name in the resource mapping json.
 
 Resource mapping json:
 
 ```js
 {
-  "packageName": "meeting",
+  "packageId": "meeting",
+  "items": [
+    ...
+  ]
+}
+```
+
+**Default**: 'packageName'
+
+Config example:
+
+```js
+{
+  plugins: [
+    new OfflinePackagePlugin({
+      packageNameKey: 'packageId'
+    })
+  ];
+}
+```
+
+### packageNameValue
+
+This option determines the value of package name in the resource mapping json.
+
+Resource mapping json:
+
+```js
+{
+  "packageNameValue": "meeting",
   "items": [
     ...
   ]
@@ -77,7 +110,37 @@ Config example:
 {
   plugins: [
     new OfflinePackagePlugin({
-      packageName: 'meeting'
+      packageNameValue: 'meeting'
+    })
+  ];
+}
+```
+
+### version
+
+This option determines the value of version in the resource mapping json.
+
+Resource mapping json:
+
+```js
+{
+  ...
+  "version": 1
+  "items": [
+    ...
+  ]
+}
+```
+
+**Default**: 1
+
+Config example:
+
+```js
+{
+  plugins: [
+    new OfflinePackagePlugin({
+      version: 2
     })
   ];
 }
@@ -172,3 +235,9 @@ Config example:
 ## Inspiration
 
 [webpack-manifest-plugin](https://github.com/danethurber/webpack-manifest-plugin)
+
+## Supplement
+
+The image below is the architecture of offline package. You could learn more about offline package via [mobile-web-best-practice](https://github.com/mcuking/mobile-web-best-practice#%E7%A6%BB%E7%BA%BF%E5%8C%85).
+
+<img src="./assets/offline-architecture.png" width=600/>
