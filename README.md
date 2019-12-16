@@ -232,6 +232,24 @@ Config example:
 }
 ```
 
+### excludeFileName
+
+This options provides control over if add a web resource file into zip file via file name. The options need to be an array. And an empty array means there is no limit of file extension.
+
+**Default**: []
+
+Config example:
+
+```js
+{
+  plugins: [
+    new OfflinePackagePlugin({
+      excludeFileName: ['main.js']
+    })
+  ];
+}
+```
+
 ## Inspiration
 
 [webpack-manifest-plugin](https://github.com/danethurber/webpack-manifest-plugin)
