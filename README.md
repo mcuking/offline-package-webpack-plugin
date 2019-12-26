@@ -26,6 +26,9 @@ Resource Mapping Json:
 }
 ```
 
+Related article:
+[Hybrid App 离线包方案实践](https://github.com/mcuking/blog/issues/63)
+
 ## Usage
 
 ```bash
