@@ -51,7 +51,7 @@ Via `webpack.config.js` or any other webpack config file.
       packageNameValue: 'meeting',
       version: 1,
       baseUrl: 'http://192.168.88.88:5000/',
-      fileTypes: ['js', 'css', 'png']
+      fileTypes: ['html', 'js', 'css', 'png']
     })
   ];
 }
@@ -229,7 +229,7 @@ Config example:
 {
   plugins: [
     new OfflinePackagePlugin({
-      fileTypes: ['js', 'css', 'png']
+      fileTypes: ['html', 'js', 'css', 'png']
     })
   ];
 }
